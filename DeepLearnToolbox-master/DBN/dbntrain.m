@@ -1,5 +1,5 @@
 function dbn = dbntrain(dbn, x, opts)
-    n = numel(dbn.rbm);
+    n = numel(dbn.rbm);   %求出矩阵中所有元素的个数
 
     dbn.rbm{1} = rbmtrain(dbn.rbm{1}, x, opts);
     for i = 2 : n
