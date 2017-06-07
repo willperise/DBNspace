@@ -1,8 +1,8 @@
 function dbn = dbnsetup(dbn, x, opts)
     n = size(x, 2);
-    dbn.sizes = [n, dbn.sizes];
+    dbn.sizes = [n, dbn.sizes];  % 列数为 dbn.sizes行向量列数+1
 %初始化W,b,c
-    for u = 1 : numel(dbn.sizes) - 1
+    for u = 1 : numel(dbn.sizes) - 1   
         dbn.rbm{u}.alpha    = opts.alpha;
         dbn.rbm{u}.momentum = opts.momentum;
 

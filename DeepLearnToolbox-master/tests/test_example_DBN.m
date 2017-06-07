@@ -9,10 +9,10 @@ test_y  = double(test_y);
 %%  ex1 train a 100 hidden unit RBM and visualize its weights
 rand('state',0) 
 dbn.sizes = [100];     % DBN的结构，v1层为raw pixel/原始图片，h1/v2层的节点数为100
-opts.numepochs =   1;    %   
-opts.batchsize = 100;    % 
+opts.numepochs =   1;    % opts普通的工具体  同一部分数据执行RBM的次数
+opts.batchsize = 100;    %  一批输入样本的个数  numbatches 代表有多少批
 opts.momentum  =   0;    % 冲量项  记录以前的更新方向（更新数据之用），并与现在的方向结合下，从而加快学习的速度
-opts.alpha     =   1;    %  初始化学习率
+opts.alpha     =   1;    %  学习速率
 dbn = dbnsetup(dbn, train_x, opts);
 dbn = dbntrain(dbn, train_x, opts);
 figure; visualize(dbn.rbm{1}.W');   %  Visualize the RBM weights
