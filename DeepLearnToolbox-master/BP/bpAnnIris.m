@@ -1,5 +1,5 @@
 %读取训练数据
-[f1,f2,f3,f4,class] = textread('trainData.txt' , '%f%f%f%f%f',150);
+[f1,f2,f3,f4,class] = textread('trainData.txt' , '%f%f%f%f%f',150);    
 
 %特征值归一化
 [input,minI,maxI] = premnmx( [f1 , f2 , f3 , f4 ]')  ;

@@ -1,9 +1,9 @@
 function nn = nnbp(nn)
-%NNBP performs backpropagation
+%NNBP performs backpropagation 进行反向传播训练
 % nn = nnbp(nn) returns an neural network structure with updated weights 
     
     n = nn.n;
-    sparsityError = 0;
+    sparsityError = 0;  %稀疏性错误
     switch nn.output
         case 'sigm'
             d{n} = - nn.e .* (nn.a{n} .* (1 - nn.a{n}));

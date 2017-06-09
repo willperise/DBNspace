@@ -1,5 +1,5 @@
-function nn = nnff(nn, x, y)
-%NNFF performs a feedforward pass
+function nn = nnff(nn, x, y)   %x,y是批量数据
+%NNFF performs a feedforward pass   执行正向训练操作，返回具有更新层激活，错误和丢失的神经网络结构。
 % nn = nnff(nn, x, y) returns an neural network structure with updated
 % layer activations, error and loss (nn.a, nn.e and nn.L)
 
@@ -11,6 +11,10 @@ function nn = nnff(nn, x, y)
 
     %feedforward pass
     for i = 2 : n-1
+        %根据选择的激活函数不同进行正向传播计算  
+        %你可以回过头去看nnsetup里面的第一个参数activation_function  激活函数
+        %sigm就是sigmoid函数,tanh_opt就是tanh的函数，这个toolbox好像有一点改变
+        %switch进行对激活函数的选择
         switch nn.activation_function 
             case 'sigm'
                 % Calculate the unit's outputs (including the bias term)
@@ -19,7 +23,7 @@ function nn = nnff(nn, x, y)
                 nn.a{i} = tanh_opt(nn.a{i - 1} * nn.W{i - 1}');
         end
         
-        %dropout
+        %dropout 的计算部分 dropoutFraction 是nnsetup中可以设置的一个参数
         if(nn.dropoutFraction > 0)
             if(nn.testing)
                 nn.a{i} = nn.a{i}.*(1 - nn.dropoutFraction);
@@ -29,8 +33,9 @@ function nn = nnff(nn, x, y)
             end
         end
         
+        %计算sparsity，nonSparsityPenalty 是对没达到sparsitytarget的参数的惩罚系数
         %calculate running exponential activations for use with sparsity
-        if(nn.nonSparsityPenalty>0)
+        if(nn.nonSparsityPenalty > 0)
             nn.p{i} = 0.99 * nn.p{i} + 0.01 * mean(nn.a{i}, 1);
         end
         

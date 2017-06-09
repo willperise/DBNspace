@@ -28,7 +28,7 @@ function rbm = rbmtrain(rbm, x, opts)
             rbm.b = rbm.b + rbm.vb;
             rbm.c = rbm.c + rbm.vc;
 
-            err = err + sum(sum((v1 - v2) .^ 2)) / opts.batchsize;
+            err = err + sum(sum((v1 - v2) .^ 2)) / opts.batchsize;   %每一批数据原样本与预测数据的方差和，即重建误差
         end
         
         disp(['epoch ' num2str(i) '/' num2str(opts.numepochs)  '. Average reconstruction error is: ' num2str(err / numbatches)]);

@@ -1,5 +1,5 @@
 function nn = nnapplygrads(nn)
-%NNAPPLYGRADS updates weights and biases with calculated gradients
+%NNAPPLYGRADS updates weights and biases with calculated gradients 用计算出的梯度更新权重和偏差
 % nn = nnapplygrads(nn) returns an neural network structure with updated
 % weights and biases
     

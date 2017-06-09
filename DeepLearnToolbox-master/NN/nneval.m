@@ -1,6 +1,6 @@
 function [loss] = nneval(nn, loss, train_x, train_y, val_x, val_y)
-%NNEVAL evaluates performance of neural network
-% Returns a updated loss struct
+%NNEVAL evaluates performance of neural network  评估神经网络的性能
+% Returns a updated loss struct  返回一个更新的损失结构
 assert(nargin == 4 || nargin == 6, 'Wrong number of arguments');
 
 nn.testing = 1;
