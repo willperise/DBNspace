@@ -2,7 +2,7 @@
 [f1,f2,f3,f4,class] = textread('trainData.txt' , '%f%f%f%f%f',150);    
 
 %特征值归一化
-[input,minI,maxI] = premnmx( [f1 , f2 , f3 , f4 ]')  ;
+[input,minI,maxI] = premnmx( [f1 , f2 , f3 , f4 ]')  ;  %
 
 %构造输出矩阵
 s = length( class ) ;
@@ -24,7 +24,7 @@ net.trainParam.lr = 0.01 ;
 net = train( net, input , output' ) ;
 
 %读取测试数据
-[t1 t2 t3 t4 c] = textread('testData.txt' , '%f%f%f%f%f',150);
+[t1,t2 ,t3,t4,c] = textread('testData.txt' , '%f%f%f%f%f',150);
 
 %测试数据归一化
 testInput = tramnmx ( [t1,t2,t3,t4]' , minI, maxI ) ;
