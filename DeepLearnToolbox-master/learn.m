@@ -4,7 +4,7 @@ a = (v1 - v2) ^ 2;
 b = (v1 - v2) .^ 2;
 c = sum((v1 - v2) .^ 2);
 d = sum(sum((v1 - v2) .^ 2));
-
+%test
 disp(a);
 disp(b);
 disp(c);
