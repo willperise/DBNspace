@@ -1,10 +1,10 @@
 tic
 %读取训练数据
-[f1,f2,f3,f4,class] = textread('trainData.txt' , '%f%f%f%f%f',150);    
+[f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15,f16,f17,f18,class] = textread('Modbus_trafficf.txt' , '%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f','headerlines',1);    
 
 %特征值归一化
-[input,minI,maxI] = premnmx( [f1 , f2 , f3 , f4 ]')  ;  %
-input
+[input,minI,maxI] = premnmx( [f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15,f16,f17,f18]')  ;  %
+
 %构造输出矩阵
 s = length( class ) ;
 output = zeros( s , 3  ) ;
@@ -13,7 +13,7 @@ for i = 1 : s
 end
 
 %创建神经网络
-net = newff( minmax(input) , [10 3] , { 'logsig' 'purelin' } , 'traingdx' ) ;%minmax求最小最大值，[10,3]定义隐藏层和输出层神经元个数， { 'logsig' 'purelin' }代表每一层传递函数，'traingdx' 代表训练函数
+net = newff( minmax(input) , [10 4] , { 'logsig' 'purelin' } , 'traingdx' ) ;%minmax求最小最大值，[10,3]定义隐藏层和输出层神经元个数， { 'logsig' 'purelin' }代表每一层传递函数，'traingdx' 代表训练函数
 
 %设置训练参数
 net.trainparam.show = 50 ;
@@ -26,10 +26,10 @@ net.trainParam.showCommandLine = false;
 net = train( net, input , output' ) ;
 
 %读取测试数据
-[t1,t2 ,t3,t4,c] = textread('testData.txt' , '%f%f%f%f%f',150);
+[f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15,f16,f17,f18,c] = textread('test.txt' , '%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f',150);
 
 %测试数据归一化
-testInput = tramnmx ( [t1,t2,t3,t4]' , minI, maxI ) ;
+testInput = tramnmx ( [f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15,f16,f17,f18]' , minI, maxI ) ;
 
 
 %仿真
@@ -39,6 +39,7 @@ hitNum = 0 ;
 for i = 1 : s2
     [m , Index] = max( Y( : ,  i ) ) ;    
     if( Index  == c(i)   ) 
+        c(i)
         hitNum = hitNum + 1 ; 
     end
 end
