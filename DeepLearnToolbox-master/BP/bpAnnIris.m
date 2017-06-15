@@ -1,4 +1,4 @@
-tic %tset
+tic %tset1
 %¶ÁÈ¡ÑµÁ·Êý¾Ý
 [f1,f2,f3,f4,class] = textread('trainData.txt' , '%f%f%f%f%f',150);    
 
