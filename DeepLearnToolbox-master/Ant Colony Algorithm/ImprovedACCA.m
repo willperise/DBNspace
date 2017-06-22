@@ -1,6 +1,7 @@
 clc;
 clf;
 clear;
+tic
  % X = 测试样本矩阵;
 X = load('data.txt');
 [N,n]=size(X);      % N =测试样本数;n =测试样本的属性数;
@@ -190,3 +191,4 @@ line(X(index2,1),X(index2,2),X(index2,3),'linestyle','none','marker','*','color'
 line(X(index3,1),X(index3,2),X(index3,3),'linestyle','none','marker','+','color','b');
 line(X(index4,1),X(index4,2),X(index4,3),'linestyle','none','marker','s','color','b');
 rotate3d
+toc

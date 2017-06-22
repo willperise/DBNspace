@@ -3,12 +3,12 @@ clear;
 mydata=importdata('data.txt');
 RHO=corr(mydata);
 R=abs(RHO);
-n=30; % The number of features without class
-m=3; % The number of selected features
-CrossOverProb=0.9; % The Cross Over Probability
-MutationProb=0.04;  % The Mutation Probability
-Population = 500;   % The Size of popuation
-GenerationNo = 300; % The Number of generation
+n=30; % The number of features without class 无类特征的数量
+m=3; % The number of selected features  被选中的特征
+CrossOverProb=0.9; % The Cross Over Probability 交叉概率
+MutationProb=0.04;  % The Mutation Probability 突变概率
+Population = 500;   % The Size of popuation 人口规模 
+GenerationNo = 300; % The Number of generation 多少代
 %[N, m, TOWNS] = setup16;
 %trail = N.*ones(N);
 na = 200;
@@ -17,7 +17,7 @@ for i=1:n
     trail(i) = cc;
     deltatrail(i) = 0;
 end;    
-maxnoiteration = 20;
+maxnoiteration = 20;  %最大限度
 k = 50;
 p = 1;
 rho = 0.75;
@@ -30,7 +30,7 @@ for j=1:na
      s(j,1:m)= Select(1:m);
 end    
 
-data = dataset(mydata(:,1:n),mydata(:,n+1));
+data = dataset(mydata(:,1:n),mydata(:,n+1));  %
 [Train,Test]=gendat(data,0.6);
 
 
